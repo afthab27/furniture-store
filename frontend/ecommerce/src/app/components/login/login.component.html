@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color: azure;">
+  
+
+
+
+<div class="container mt-3" >
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form [formGroup]="customerFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="customer">
+          <h3>Login</h3>
+          <hr />
+
+          <!-- email -->
+          <div class="my-3">
+            <label class="form-label">Email:</label>
+            <input type="email" class="form-control" formControlName="email" />
+
+            <div
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="email?.errors?.['required']">Email is required.</div>
+            </div>
+          </div>
+
+          <!-- password Name -->
+          <div class="my-3">
+            <label class="form-label">password:</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+            />
+            <div
+              *ngIf="password.invalid && (password.dirty || password.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="password.errors?.['required']">
+                password is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div style="float: left">
+          <input type="submit" value="Login" class="btn btn-primary" />
+        </div>
+
+        <div style="float: right">
+          New Customer?
+          <a routerLink="/register" class="btn btn-primary">Register</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-lg bg " style="background-color: burlywood;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Furniture Store</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact-us">ContactUs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about-us">AboutUs</a>
+        </li>
+
+        <app-product-category-menu></app-product-category-menu>
+        <app-search></app-search>
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()" >
+          <a class="nav-link">Welcome....{{ getUserName() }}</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav-mr-sm-2">
+        <app-cart-status></app-cart-status>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+  
+<footer style="background-color: burlywood; color: #fff; padding: 2em; text-align: center;">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+    <div style="margin-right: 20px; ">
+      <h3 style="margin-top: 0;">About More</h3>
+      <ul style="list-style: none; margin: 0; padding: 0;">
+        <li style="display: inline-block; margin-right: 10px;"><a href="#"
+            style="color: #fff; text-decoration: none;">Home</a></li>
+        <li style="display: inline-block; margin-right: 10px;"><a href="#"
+            style="color: #fff; text-decoration: none;">About-us</a></li>
+        <li style="display: inline-block; margin-right: 10px;"><a href="#"
+            style="color: #fff; text-decoration: none;">Contact-us</a></li>
+      </ul>
+    </div>
+    
+    <p
+      style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 60px;">
+      OUR FURNITURES</p>
+    <div style="margin-right: 10px;">
+      <h3 style="margin-top: 0;">We AlsoIn</h3>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex;">
+        <li style="margin-right: 10px;"><a href="#" target="_blank" style="color: #4b31ca; text-decoration: none;"><i
+              class="fab fa-facebook-f" style="font-size: 24px;"></i></a></li>
+        <li style="margin-right: 10px;"><a href="#" target="_blank" style="color: #07195d; text-decoration: none;"><i
+              class="fab fa-twitter" style="font-size: 24px;"></i></a></li>
+        <li style="margin-right: 10px;"><a href="#" target="_blank" style="color: #a04040; text-decoration: none;"><i
+              class="fab fa-instagram" style="font-size: 24px;"></i></a></li>
+        <li style="margin-right: 10px;"><a href="#" target="_blank" style="color: #754ab1; text-decoration: none;"><i
+              class="fab fa-linkedin-in" style="font-size: 24px;"></i></a></li>
+        <li style="margin-right: 10px;"><a href="#" target="_blank" style="color: #e01114; text-decoration: none;"><i
+              class="fab fa-youtube" style="font-size: 24px;"></i></a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
